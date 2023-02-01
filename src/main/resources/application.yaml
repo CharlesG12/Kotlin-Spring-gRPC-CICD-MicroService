@@ -1,0 +1,14 @@
+postgres:
+  host: localhost
+  port: 5432
+  db: demo_db
+spring:
+  r2dbc:
+    url: "r2dbc:postgresql://${postgres.host}:${postgres.port}/${postgres.db}"
+    username: postgres
+    password: its_a_secret
+#    pool:
+#      initial-size: 10
+#      max-size: 50
+#      max-idle-time: "30s"
+#      validation-query: "SELECT 1"
