@@ -16,6 +16,7 @@ repositories {
 }
 
 dependencies {
+	// BOM
 	implementation(platform("com.linecorp.armeria:armeria-bom:1.20.1"))
 	implementation(platform("io.netty:netty-bom:4.1.82.Final"))
 
@@ -31,7 +32,14 @@ dependencies {
 	runtimeOnly("org.postgresql:postgresql:42.5.0")
 	runtimeOnly("org.postgresql:r2dbc-postgresql:0.9.2.RELEASE")
 
-
+	// Test
+	testImplementation("io.r2dbc:r2dbc-h2")
+	testImplementation("com.h2database:h2")
+	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	testImplementation("org.junit.jupiter:junit-jupiter:5.4.0")
+	testImplementation("com.ninja-squad:springmockk:4.0.0")
+	testImplementation("io.projectreactor.kotlin:reactor-kotlin-extensions:1.1.3")
+	testImplementation("io.projectreactor:reactor-test:3.5.2")
 
 //	implementation("org.jetbrains.kotlin:kotlin-reflect")
 //	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
