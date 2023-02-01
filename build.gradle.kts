@@ -16,6 +16,14 @@ repositories {
 }
 
 dependencies {
+	implementation(platform("com.linecorp.armeria:armeria-bom:1.20.1"))
+	implementation(platform("io.netty:netty-bom:4.1.82.Final"))
+
+	// Spring / Armeria
+	implementation("com.linecorp.armeria:armeria-spring-boot2-webflux-starter")
+	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+	compileOnly("io.springfox:springfox-swagger-ui:3.0.0")
+
 	implementation("io.springfox:springfox-boot-starter:3.0.0")
 	compileOnly("io.springfox:springfox-swagger-ui:3.0.0")
 	implementation("org.springframework.boot:spring-boot-starter-data-r2dbc")
