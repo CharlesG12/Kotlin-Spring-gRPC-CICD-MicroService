@@ -20,7 +20,7 @@ jobs:
         java-version: 17
 
     - name: Build project
-      run: make build
+      run: ./gradlew clean build
 
     - name: Test project
-      run: make test
+      run: ./gradlew test
