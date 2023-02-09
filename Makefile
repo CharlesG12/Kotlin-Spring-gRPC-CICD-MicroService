@@ -27,7 +27,7 @@ teardown-postgres:
 
 .PHONY: build-docker
 build-docker:
-	docker build -t $(imageName) .
+	docker build -f Dockerfile -t $(imageName) .
 
 .PHONY: run-docker
 run-docker:
