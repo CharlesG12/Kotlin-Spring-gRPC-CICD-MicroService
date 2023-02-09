@@ -20,7 +20,22 @@ jobs:
         java-version: 17
 
     - name: Build project
-      run: make build
+      run: ./gradlew clean build
 
     - name: Test project
-      run: make test
+      run: ./gradlew test
+
+    - uses: mr-smithers-excellent/docker-build-push@v5
+      with:
+        image: charlesdeguo/demo-app
+        tags: v1, latest
+        registry: docker.io
+        dockerfile: Dockerfile
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+
+#    - name: docker build
+#      run: make build-docker
+#
+#    - name: docker push
+#      run: make publish-docker

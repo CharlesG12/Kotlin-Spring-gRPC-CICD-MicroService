@@ -2,7 +2,14 @@ ifndef URL
 override URL = http://localhost:8080
 endif
 
-imageName := demo_api:0.0.1
+imageName := ameria_kotlin_test_api
+VERSION := 0.0.1
+DOCKER_REPO := charlesdeguo
+
+.PHONY: build
+build:
+	./gradlew clean build
+	docker build -f Dockerfile -t $(imageName):$(VERSION) .
 
 .PHONY: test
 test:
@@ -22,13 +29,13 @@ teardown-postgres:
 
 .PHONY: build-docker
 build-docker:
-	docker build -t $(imageName) .
-
-.PHONY: run-docker
-run-docker:
-	docker run -p 8080:8080 -e POSTGRES_HOST=host.docker.internal $(imageName)
-
-.PHONY: build
-build:
-	./gradlew clean build
 	docker build -f Dockerfile -t $(imageName) .
+
+.PHONY: build-docker
+build-docker:
+	docker build -f Dockerfile -t $(imageName) .
+
+.PHONY: publish-docker
+run-docker:
+	docker push $(DOCKER_REPO)/$(imageName):$(VERSION)
+# 	docker push ${{secrets.DOCKER_USER}}/charlesdeguo
