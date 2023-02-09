@@ -4,7 +4,6 @@ endif
 
 imageName := demo_api:0.0.1
 
-
 .PHONY: test
 test:
 	./gradlew test
