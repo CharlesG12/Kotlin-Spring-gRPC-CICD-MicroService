@@ -2,10 +2,6 @@ ifndef URL
 override URL = http://localhost:8080
 endif
 
-ifndef VERSION
-override VERSION = 0.0.1
-endif
-
 imageName := ameria_kotlin_test_api:0.0.1
 
 .PHONY: build
