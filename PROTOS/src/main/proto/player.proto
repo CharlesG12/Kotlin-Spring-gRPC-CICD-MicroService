@@ -2,20 +2,32 @@ syntax = "proto3";
 
 option java_multiple_files = true;
 option java_package = "com.charles.demo";
-option java_outer_classname = "PlayerProtoww";
+option java_outer_classname = "PlayerProto";
 
 package players;
 
-service UserService {
-  rpc getPlayerById (GetPlayerByIdReq) returns (Player);
+service PlayerService {
+  rpc getPlayerById(GetPlayerByIdReq) returns (GetPlayerByIdRes) {}
+  rpc GetAllPlayers(GetAllPlayersReq) returns (GetAllPlayersRes) {}
+}
+
+message GetAllPlayersReq {}
+message GetAllPlayersRes {
+  repeated PlayerDTO players = 1;
+
 }
 
 message GetPlayerByIdReq {
   int32 id = 1;
 }
 
-message Player {
-  int64 id = 1;
+message GetPlayerByIdRes {
+  PlayerDTO player = 1;
+}
+
+message PlayerDTO {
+  int32 id = 1;
+
   string first_name = 2;
   string last_name = 3;
   string email = 4;

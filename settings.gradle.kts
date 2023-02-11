@@ -1,7 +1,7 @@
 rootProject.name = "demo"
 println("This is executed during the initialization phase.")
 
-include("PROTOS", "Server")
+include("PROTOS", "Server", "Client")
 
 pluginManagement {
     val kotlinVersion: String by settings
