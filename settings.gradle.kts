@@ -1,7 +1,7 @@
 rootProject.name = "demo"
 println("This is executed during the initialization phase.")
 
-include("PROTOS", "Server")
+include("PROTOS", "Server", "Client")
 
 pluginManagement {
     val kotlinVersion: String by settings
@@ -14,6 +14,5 @@ pluginManagement {
         id("com.google.protobuf") version protobufPluginVersion
         id("org.springframework.boot") version springBootVersion
         id("io.spring.dependency-management") version springDepMgmtVersion
-
     }
 }

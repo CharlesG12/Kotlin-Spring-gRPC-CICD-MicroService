@@ -1,5 +1,6 @@
 package com.example.demo.repository
 
+import com.charles.demo.PlayerDTO
 import org.springframework.data.annotation.Id
 import org.springframework.data.relational.core.mapping.Column
 import org.springframework.data.relational.core.mapping.Table
@@ -16,7 +17,19 @@ data class Player(
     var lastName: String,
     @Column("email")
     var email: String
-)
+) {
+    constructor(dto: PlayerDTO): this(
+        if (dto.id > 0) dto.id else null,
+        dto.firstName,
+        dto.lastName,
+        dto.email
+    )
+    fun toMessage() = PlayerDTO.newBuilder()
+        .setId(this.id!!)
+        .setFirstName(this.firstName)
+        .setLastName(this.lastName)
+        .setEmail(this.email)
+}
 
 @Repository
 interface PlayerRepository : ReactiveCrudRepository<Player, Int>
