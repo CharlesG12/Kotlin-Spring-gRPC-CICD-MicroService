@@ -14,5 +14,6 @@ pluginManagement {
         id("com.google.protobuf") version protobufPluginVersion
         id("org.springframework.boot") version springBootVersion
         id("io.spring.dependency-management") version springDepMgmtVersion
+
     }
 }
