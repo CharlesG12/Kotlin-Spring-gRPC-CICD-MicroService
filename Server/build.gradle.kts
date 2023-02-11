@@ -1,18 +1,35 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import com.google.protobuf.gradle.*;
+
+val protobufVersion: String by project
+val grpcVersion: String by project
+val reactorGrpcVersion: String by project
+val protobufPluginVersion : String by project
 
 plugins {
 	id("org.springframework.boot") version "2.7.8"
 	id("io.spring.dependency-management") version "1.0.15.RELEASE"
 	kotlin("jvm") version "1.6.21"
 	kotlin("plugin.spring") version "1.6.21"
+	id("com.google.protobuf") version  "0.8.18"
 }
 
-group = "com.example"
-version = "0.0.1-SNAPSHOT"
+
+
+ext["grpcVersion"] = "1.46.0"
+ext["grpcKotlinVersion"] = "1.3.0" // CURRENT_GRPC_KOTLIN_VERSION
+ext["protobufVersion"] = "3.20.1"
+
 java.sourceCompatibility = JavaVersion.VERSION_17
 
-repositories {
-	mavenCentral()
+allprojects {
+	group = "com.example"
+	version = "0.0.1-SNAPSHOT"
+
+	repositories {
+		mavenCentral()
+		google()
+	}
 }
 
 dependencies {
@@ -47,6 +64,18 @@ dependencies {
 //	developmentOnly("org.springframework.boot:spring-boot-devtools")
 //	testImplementation("org.springframework.boot:spring-boot-starter-test")
 //	testImplementation("io.projectreactor:reactor-test")
+
+	// Grpc
+//	implementation("io.grpc:grpc-protobuf:$grpcVersion")
+//	implementation("io.grpc:grpc-stub:$grpcVersion")
+//	implementation("com.salesforce.servicelibs:reactor-grpc-stub:$reactorGrpcVersion")
+//
+//	implementation("io.grpc:grpc-kotlin-stub:1.1.0")
+//	compileOnly("jakarta.annotation:jakarta.annotation-api:1.3.5")
+//	implementation("com.google.protobuf:protobuf-java:$protobufVersion")
+//	implementation("net.devh:grpc-server-spring-boot-starter:2.12.0.RELEASE")
+//	implementation("net.devh:grpc-client-spring-boot-starter:2.12.0.RELEASE")
+//	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.1")
 }
 
 tasks.bootJar {
@@ -63,3 +92,21 @@ tasks.withType<KotlinCompile> {
 tasks.withType<Test> {
 	useJUnitPlatform()
 }
+
+//protobuf {
+//	protoc{
+//		artifact = "com.google.protobuf:protoc:$protobufVersion"
+//	}
+//	plugins {
+//		id("grpc") { artifact = "io.grpc:protoc-gen-grpc-java:$grpcVersion" }
+//		id("reactorGrpc") { artifact = "com.salesforce.servicelibs:reactor-grpc:$reactorGrpcVersion" }
+//	}
+//	generateProtoTasks {
+//		ofSourceSet("main").forEach {
+//			it.plugins {
+//				id("grpc")
+//				id("reactorGrpc")
+//			}
+//		}
+//	}
+//}
