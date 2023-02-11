@@ -9,6 +9,7 @@ A reactive server example written in Kotlin
 # Technologies
 - Kotlin
 - Gradle
+- Github Action
 - Armeria: Reactive Web server framework
 - Spring Boot: Dependency Injection
 - Reactor: Reactive library for non-blocking asynchronous paradigm

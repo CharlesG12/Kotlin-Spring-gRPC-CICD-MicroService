@@ -9,7 +9,7 @@ DOCKER_REPO := charlesdeguo
 .PHONY: build
 build:
 	./gradlew clean build
-	docker build -f Dockerfile -t $(imageName):$(VERSION) .
+	docker build -f Server/Dockerfile -t $(imageName):$(VERSION) .
 
 .PHONY: test
 test:
@@ -29,11 +29,11 @@ teardown-postgres:
 
 .PHONY: build-docker
 build-docker:
-	docker build -f Dockerfile -t $(imageName) .
+	docker build -f Server/Dockerfile -t $(imageName) .
 
 .PHONY: build-docker
 build-docker:
-	docker build -f Dockerfile -t $(imageName) .
+	docker build -f Server/Dockerfile -t $(imageName) .
 
 .PHONY: publish-docker
 run-docker:

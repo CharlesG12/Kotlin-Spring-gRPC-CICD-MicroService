@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.charles.demo";
+option java_outer_classname = "PlayerProtoww";
+
+package players;
+
+service UserService {
+  rpc getPlayerById (GetPlayerByIdReq) returns (Player);
+}
+
+message GetPlayerByIdReq {
+  int32 id = 1;
+}
+
+message Player {
+  int64 id = 1;
+  string first_name = 2;
+  string last_name = 3;
+  string email = 4;
+}
