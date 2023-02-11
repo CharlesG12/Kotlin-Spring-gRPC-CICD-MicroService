@@ -18,6 +18,7 @@ data class Player(
     @Column("email")
     var email: String
 ) {
+// This is for grpc create player
     constructor(dto: PlayerDTO): this(
         if (dto.id > 0) dto.id else null,
         dto.firstName,
@@ -29,6 +30,7 @@ data class Player(
         .setFirstName(this.firstName)
         .setLastName(this.lastName)
         .setEmail(this.email)
+        .build()!!
 }
 
 @Repository

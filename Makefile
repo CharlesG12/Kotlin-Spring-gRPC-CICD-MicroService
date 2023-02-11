@@ -17,7 +17,11 @@ test:
 
 .PHONY: run-server
 run-server:
-	./gradlew bootRun
+	./gradlew bootRun -p Server
+
+.PHONY: run-client
+run-client:
+	./gradlew bootRun -p Client
 
 .PHONY: create-postgres
 create-postgres:
@@ -26,10 +30,6 @@ create-postgres:
 .PHONY: teardown-postgres
 teardown-postgres:
 	docker-compose -f .local/docker-compose.yaml down -v
-
-.PHONY: build-docker
-build-docker:
-	docker build -f Server/Dockerfile -t $(imageName) .
 
 .PHONY: build-docker
 build-docker:

@@ -15,7 +15,7 @@ fun main() {
     val host = "localhost"
     val port = 8080
 
-// Reactive gRPC
+    // Reactive gRPC
     println("gRPC Demo")
     val channel = ManagedChannelBuilder
         .forAddress(host, port)
@@ -23,7 +23,8 @@ fun main() {
         .build()
     val grpcClient = PlayerGrpcClient(channel)
     println("PlayerGrpcClient fine")
-    val grpcEmployees = grpcClient.getPlayerById(1)
+    val grpcEmployees = grpcClient.getAllPlayers()
+    println("PlayerGrpcClient fine")
     grpcEmployees.doOnNext { e -> println(e) }.block()
     grpcClient.close()
 }

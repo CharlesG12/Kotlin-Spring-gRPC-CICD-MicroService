@@ -7,7 +7,13 @@ option java_outer_classname = "PlayerProto";
 package players;
 
 service PlayerService {
-  rpc getPlayerById(GetPlayerByIdReq) returns (GetPlayerByIdRes) {};
+  rpc getPlayerById(GetPlayerByIdReq) returns (GetPlayerByIdRes) {}
+  rpc GetAllPlayers(GetAllPlayersReq) returns (GetAllPlayersRes) {}
+}
+
+message GetAllPlayersReq {}
+message GetAllPlayersRes {
+  repeated PlayerDTO players = 1;
 }
 
 message GetPlayerByIdReq {
