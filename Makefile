@@ -9,7 +9,7 @@ DOCKER_REPO := charlesdeguo
 .PHONY: build
 build:
 	./gradlew clean build
-	docker build -f Dockerfile -t $(imageName):$(VERSION) .
+	docker build -f Server/Dockerfile -t $(imageName):$(VERSION) .
 
 .PHONY: test
 test:
