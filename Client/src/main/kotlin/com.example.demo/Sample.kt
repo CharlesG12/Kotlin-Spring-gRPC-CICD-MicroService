@@ -23,8 +23,8 @@ fun main() {
         .build()
     val grpcClient = PlayerGrpcClient(channel)
     println("PlayerGrpcClient fine")
-    val grpcEmployees = grpcClient.getAllPlayers()
+    val grpcPlayers = grpcClient.getAllPlayers()
     println("PlayerGrpcClient fine")
-    grpcEmployees.doOnNext { e -> println(e) }.block()
+    grpcPlayers.doOnNext { e -> println(e) }.block()
     grpcClient.close()
 }
